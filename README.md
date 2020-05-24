@@ -1,12 +1,12 @@
 # java-movie-title
 
 For use:
-- You need to have Java on your machine.
+- You need a client application to connect with server.
 - You need to have a internet connection.
 
 How it works:
 - You need to connect with the server by IP and PORT. After connect, you're able to send your request.
-- Request exemple: <queryLength>:<query>
+- Request exemple: queryLength:query
 - The response will follow the request exemple.
 
 
