@@ -16,7 +16,7 @@ public class APIProxy {
 	private static final String API_URL = "http://www.omdbapi.com/";
 	private static final String API_TITLE_PREFIX = "?t=";
 
-	public static Object getMovies(int length, String title) {
+	public static List<String> getMovies(int length, String title) {
 		try {
 			List<String> titles = new ArrayList<>();
 			URL url = new URL(buildUrl(title));
@@ -49,7 +49,6 @@ public class APIProxy {
 				index = length;
 			}
 			titles.add(String.valueOf(object.get("Title")));
-			System.out.println(object.get("Title"));
 		}
 		return titles;
 	}

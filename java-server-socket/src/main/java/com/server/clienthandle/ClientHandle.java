@@ -29,8 +29,7 @@ public class ClientHandle implements Runnable {
 			Protocol protocol = ProtocolHandler.buildProtocolBaseOnRequest(request);
 			
 			if(protocol.isValid()) {
-//				APIProxy.getMovies(protocol.getQueryLength(), protocol.getQuery());
-				outputStream.writeUTF("Server said: " + APIProxy.getMovies(protocol.getQueryLength(), protocol.getQuery()));
+				outputStream.writeUTF(ProtocolHandler.buildResponse(APIProxy.getMovies(protocol.getQueryLength(), protocol.getQuery())));
 				outputStream.flush();
 			} else {
 				LOGGER.warning("Invalid request. Request: " + request);

@@ -1,5 +1,8 @@
 package com.server.protocol;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -42,6 +45,15 @@ public class ProtocolHandlerTest {
 		Protocol protocol = new Protocol();
 		protocol.setValid(false);
 		return protocol;
+	}
+
+	@Test
+	public void getResponse() {
+		String expected = "3:Dark Knight\nToy Story\nThe Avengers\n";
+		List<String> titles = Arrays.asList("Dark Knight", "Toy Story", "The Avengers");
+		String actual = ProtocolHandler.buildResponse(titles);
+
+		Assert.assertEquals(expected, actual);
 	}
 
 	

@@ -12,23 +12,23 @@ public class SocketRunnable {
 
 	private static final Logger LOGGER = Logger.getLogger(SocketRunnable.class.getName());
 	private static final int PORT = 5555;
+	private static final String ADDR = "localhost";
 
     public static void main(String[] args) {
     	try {
-			startServer();
+			startServer(PORT, ADDR);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
     }
 
-    private static void startServer() throws IOException {
-    	InetAddress addr = InetAddress.getByName("192.168.15.5");
-    	ServerSocket serverSocket = new ServerSocket(PORT, 50, addr);
+    public static void startServer(int port, String addr) throws IOException {
+    	InetAddress address = InetAddress.getByName(addr);
+    	ServerSocket serverSocket = new ServerSocket(port, 50, address);
     	serverSocket.setReuseAddress(true);
     	LOGGER.info("Starting server on " + PORT + " port...");
 
     	startNewClientThread(serverSocket);
-    	
     }
 
     private static void startNewClientThread(ServerSocket serverSocket) throws IOException {

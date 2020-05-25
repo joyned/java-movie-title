@@ -1,5 +1,6 @@
 package com.server.protocol;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,6 +33,20 @@ public class ProtocolHandler {
 		Pattern pattern = Pattern.compile("[0-9]*:[A-Za-z0-9 ]*");
 		Matcher matcher = pattern.matcher(request);
 		return matcher.matches();
+	}
+
+	public static String buildResponse(List<String> response) {
+		String res = "";
+		int length = response.size();
+
+		if(length != 0) {
+			res += length + ":";
+		}
+
+		for(int index = 0; index < length; index++) {
+			res += response.get(index) + "\n";
+		}
+		return res;
 	}
 
 }
